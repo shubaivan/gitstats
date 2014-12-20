@@ -6,6 +6,12 @@ parameters:
     database_name:     symfony
     database_user:     root
     database_password: ~
+
+    domain: your-project.hackathon.pp.ua
+    prod_server_ip: 000.00.000.00
+    prod_server_pass: 123456
+    https_github_repository_url: https://github.com/username/repository.git
+
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
 
