@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Add new student{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-7">
+            <form role="form" method="post">
+                <div>
+                    {{ form_label(form.firstName, 'First name') }}
+                    {{ form_widget(form.firstName, { 'attr': {'class': 'form-control', 'placeholder': 'First name' } }) }} <br>
+                    {{ form_label(form.lastName, 'Last name') }}
+                    {{ form_widget(form.lastName, { 'attr': {'class': 'form-control', 'placeholder': 'Last name' } }) }} <br>
+                    {{ form_label(form.githubLogin, 'GitHub Login') }}
+                    {{ form_widget(form.githubLogin, { 'attr': {'class': 'form-control', 'placeholder': 'GitHub Login' } }) }} <br>
+                    {{ form_label(form.project, 'project') }}
+                    {{ form_widget(form.project, { 'attr': {'class': 'form-control', 'placeholder': 'Project' } }) }} <br>
+                </div>
+                <br>
+                <button type="submit" class="btn">Add</button>
+                {{ form_rest(form) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}
