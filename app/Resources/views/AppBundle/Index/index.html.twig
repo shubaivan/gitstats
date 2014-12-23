@@ -1,25 +1,31 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Add new student{% endblock %}
+{% block title %}GeekHub Students Stats{% endblock %}
 
 {% block body %}
     <div class="row">
         <div class="col-md-7">
-            <form role="form" method="post">
-                <div>
-                    {{ form_label(form.firstName, 'First name') }}
-                    {{ form_widget(form.firstName, { 'attr': {'class': 'form-control', 'placeholder': 'First name' } }) }} <br>
-                    {{ form_label(form.lastName, 'Last name') }}
-                    {{ form_widget(form.lastName, { 'attr': {'class': 'form-control', 'placeholder': 'Last name' } }) }} <br>
-                    {{ form_label(form.githubLogin, 'GitHub Login') }}
-                    {{ form_widget(form.githubLogin, { 'attr': {'class': 'form-control', 'placeholder': 'GitHub Login' } }) }} <br>
-                    {{ form_label(form.project, 'project') }}
-                    {{ form_widget(form.project, { 'attr': {'class': 'form-control', 'placeholder': 'Project' } }) }} <br>
-                </div>
-                <br>
-                <button type="submit" class="btn">Add</button>
-                {{ form_rest(form) }}
-            </form>
+            <div class="panel panel-default">
+                <div class="panel-heading">Students</div>
+                <table class="table">
+                    <tr>
+                        <th>#</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Github</th>
+                        <th>Project</th>
+                    </tr>
+                    {% for student in students %}
+                        <tr>
+                            <td>{{ student.id }}</td>
+                            <td>{{ student.firstName }}</td>
+                            <td>{{ student.lastName }}</td>
+                            <td><a href="{{ path('app_student_get', {'slug': student.slug}) }}">{{ student.github }}</a></td>
+                            <td>{{ student.project }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </div>
 {% endblock %}

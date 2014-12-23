@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Show info {{ student.github }}{% endblock %}
+
+{% block body %}
+    <h1 style="color:#636363;">{{ student.firstName }} {{ student.lastName }}</h1>
+    <strong>Project: </strong>{{ student.project }}<br>
+    <strong>User: </strong>{{ gitStat. }}<br>
+    <strong>Github: </strong><a href="http://github.com/{{ student.github }}">http://github.com/{{ student.github }}</a><br>
+{% endblock %}

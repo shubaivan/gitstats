@@ -18,7 +18,7 @@ class StudentType extends AbstractType
         $builder
             ->add('firstName')
             ->add('lastName')
-            ->add('githubLogin')
+            ->add('github')
             ->add('project')
         ;
     }
@@ -29,7 +29,7 @@ class StudentType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Student',
+            'data_class'      => 'AppBundle\Entity\Student',
             'csrf_protection' => true,
             'intention'       => 'appbundle_student',
         ));
