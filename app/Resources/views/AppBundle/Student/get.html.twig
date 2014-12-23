@@ -1,10 +1,38 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Show info {{ student.github }}{% endblock %}
+{% block title %}Show Github info {{ student.github }}{% endblock %}
 
 {% block body %}
-    <h1 style="color:#636363;">{{ student.firstName }} {{ student.lastName }}</h1>
-    <strong>Project: </strong>{{ student.project }}<br>
-    <strong>User: </strong>{{ gitStat. }}<br>
-    <strong>Github: </strong><a href="http://github.com/{{ student.github }}">http://github.com/{{ student.github }}</a><br>
+    <div class="row">
+        <div class="col-md-5" style="margin: 40px auto;">
+            <h1 style="color:#636363;">{{ student.firstName }} {{ student.lastName }}</h1>
+            <p><strong>Project: </strong>{{ student.project }}</p>
+            <p><strong>Github: </strong><a href="http://github.com/{{ student.github }}">http://github.com/{{ student.github }}</a></p>
+
+            {% for stat in stats %}
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="badge">{{ git.public_repos }}</span>
+                        Repositories
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">{{ git.public_gists }}</span>
+                        Gists
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">{{ git.followers }}</span>
+                        Followers
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">{{ git.following }}</span>
+                        Following
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">{{ stat.0.score|round }}</span>
+                        Score
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

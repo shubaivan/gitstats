@@ -1,23 +1,32 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Add new student{% endblock %}
+{% block title %}Add new Geekhub student{% endblock %}
 
 {% block body %}
-    <div class="col-md-7">
-        <form role="form" method="post">
-            <div>
-                {{ form_label(form.firstName, 'First name') }}
-                {{ form_widget(form.firstName, { 'attr': {'class': 'form-control', 'placeholder': 'First name' } }) }} <br>
-                {{ form_label(form.lastName, 'Last name') }}
-                {{ form_widget(form.lastName, { 'attr': {'class': 'form-control', 'placeholder': 'Last name' } }) }} <br>
-                {{ form_label(form.github, 'Github Login') }}
-                {{ form_widget(form.github, { 'attr': {'class': 'form-control', 'placeholder': 'Github Login' } }) }} <br>
-                {{ form_label(form.project, 'Project') }}
-                {{ form_widget(form.project, { 'attr': {'class': 'form-control', 'placeholder': 'Project' } }) }} <br>
+<div class="row" style="margin: 40px auto;">
+    <div class="col-md-5">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Add new Geekhub student</h3>
             </div>
-            <br>
-            <button type="submit" class="btn btn-default">Add</button>
-            {{ form_rest(form) }}
-        </form>
+            <div class="panel-body">
+                <form role="form" method="post">
+                    <div>
+                        {{ form_label(form.firstName, 'First name') }}
+                        {{ form_widget(form.firstName, { 'attr': {'class': 'form-control', 'placeholder': 'First name' } }) }} <br>
+                        {{ form_label(form.lastName, 'Last name') }}
+                        {{ form_widget(form.lastName, { 'attr': {'class': 'form-control', 'placeholder': 'Last name' } }) }} <br>
+                        {{ form_label(form.github, 'Github Login') }}
+                        {{ form_widget(form.github, { 'attr': {'class': 'form-control', 'placeholder': 'Github Login' } }) }} <br>
+                        {{ form_label(form.project, 'Project') }}
+                        {{ form_widget(form.project, { 'attr': {'class': 'form-control', 'placeholder': 'Project' } }) }} <br>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-success">Add student</button>
+                    {{ form_rest(form) }}
+                </form>
+            </div>
+        </div>
     </div>
+</div>
 {% endblock %}

@@ -48,13 +48,11 @@ class StudentController extends Controller
     public function getAction($slug)
     {
         $client = new Client();
-        $gitStat = $client->users()->find($slug);
-
-        dump($gitStat); exit;
 
         return [
-            'student' => $this->container->get('doctrine.orm.entity_manager')->getRepository('AppBundle:Student')->findOneBySlug($slug),
-            //'gitStat'    => $client->users()->find($slug),
+            'student'   => $this->container->get('doctrine.orm.entity_manager')->getRepository('AppBundle:Student')->findOneBySlug($slug),
+            'stats'     => $client->users()->find($slug),
+            'git'       => $client->users()->show($slug),
         ];
     }
 }

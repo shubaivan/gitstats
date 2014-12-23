@@ -17,8 +17,6 @@ class IndexController extends Controller
      */
     public function indexAction()
     {
-        $students = $this->container->get('doctrine.orm.entity_manager')->getRepository('AppBundle:Student')->findAll();
-
-        return ['students' => $students];
+        return ['students' => $students = $this->container->get('doctrine.orm.entity_manager')->getRepository('AppBundle:Student')->findAll()];
     }
 }
