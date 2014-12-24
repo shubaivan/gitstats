@@ -25,6 +25,11 @@
                     <button type="submit" class="btn btn-success">Add student</button>
                     {{ form_rest(form) }}
                 </form>
+                {% for flashMessage in app.session.flashbag.get('blogger-notice') %}
+                    <div class="blogger-notice">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
