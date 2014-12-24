@@ -5,6 +5,11 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Event;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Email;
+
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Student
@@ -180,5 +185,32 @@ class Student
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('firstName', new NotBlank());
+        $metadata->addPropertyConstraint('lastName', new NotBlank());
+        $metadata->addPropertyConstraint('github', new NotBlank());
+        $metadata->addPropertyConstraint('project', new NotBlank());
+
+        $metadata->addPropertyConstraint('github', new Assert\Regex(array(
+            'pattern'     => '/^[a-z]+$/i',
+            'htmlPattern' => '^[a-zA-Z]+$',
+        )));
+
+        $metadata->addPropertyConstraint('firstName', new Assert\Length(array(
+            'min'        => 2,
+            'max'        => 50,
+            'minMessage' => 'Your first name must be at least {{ limit }} characters long',
+            'maxMessage' => 'Your first name cannot be longer than {{ limit }} characters long',
+        )));
+
+        $metadata->addPropertyConstraint('lastName', new Assert\Length(array(
+            'min'        => 2,
+            'max'        => 50,
+            'minMessage' => 'Your first name must be at least {{ limit }} characters long',
+            'maxMessage' => 'Your first name cannot be longer than {{ limit }} characters long',
+        )));
     }
 }

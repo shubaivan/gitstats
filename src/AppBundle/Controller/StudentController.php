@@ -29,12 +29,20 @@ class StudentController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($form->isValid()) {
+                $this->get('session')->getFlashBag()->add(
+                    'blogger-notice',
+                    'Студент добавлен');
+
+
                 $this->container->get('doctrine.orm.entity_manager')->persist($student);
                 $this->container->get('doctrine.orm.entity_manager')->flush();
+
+                return $this->redirect($this->generateUrl('app_student_new'));
             }
         }
 
         return ["form" => $form->createView()];
+
     }
 
     /**
